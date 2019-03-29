@@ -8,13 +8,49 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style type="text/css">
+        #form1 {
+            height: 453px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <p>
+                    STALYN ALEJANDRO ALCOCER VALENCIA - 20947870E</p>
             </asp:ContentPlaceHolder>
         </div>
+        <asp:Button ID="title" runat="server" BackColor="#66CCFF" Font-Bold="True" Font-Size="XX-Large" Height="137px" Text="HADA P3 - CURSO 18/19" Width="641px" />
+        <br />
+        <br />
+        PÁGINA DE USUARIO<br />
+        <br />
+        NIF:<br />
+        <asp:TextBox ID="TextBox1" runat="server" style="margin-bottom: 8px" Width="547px"></asp:TextBox>
+        <br />
+        Nombre:<br />
+        <asp:TextBox ID="TextBox2" runat="server" Width="546px"></asp:TextBox>
+        <br />
+        Edad:<br />
+        <asp:TextBox ID="TextBox3" runat="server" Width="545px"></asp:TextBox>
+        <br />
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="Leer" />
+&nbsp;
+        <asp:Button ID="Button2" runat="server" Text="Leer Primero" />
+&nbsp;
+        <asp:Button ID="Button3" runat="server" Text="Leer Anterior" />
+&nbsp;
+        <asp:Button ID="Button4" runat="server" Text="Leer Siguiente" />
+&nbsp;
+        <asp:Button ID="Button5" runat="server" Text="Crear" />
+&nbsp;
+        <asp:Button ID="Button6" runat="server" Text="Actualizar" />
+&nbsp;
+        <asp:Button ID="Button7" runat="server" Text="Borrar" />
+&nbsp;
     </form>
 </body>
 </html>
