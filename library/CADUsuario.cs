@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Data;
-
 using System.ComponentModel;
-
 using System.Drawing;
 using System.Text;
-
 using System.Windows;
 
 namespace library
@@ -23,8 +20,6 @@ namespace library
         public CADUsuario() {
             //Adquiere la cadena de conexión desde un único sitio.
             conexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\EPS\Desktop\HadaPractica3\hada-p3\App_Data\Database.mdf;Integrated Security=True";
-            
-
         }
 
 
@@ -36,15 +31,13 @@ namespace library
 
 
             c.Open();
-     
-
-
+    
             SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('20E','stalyn',22)",c);
 
             com.ExecuteNonQuery();
-
+        
             c.Close();
-
+        
             return true;
         }
 
