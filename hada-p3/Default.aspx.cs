@@ -18,6 +18,7 @@ namespace hada_p3
         }
 
         public void leer(object sender, EventArgs e) {
+            Response.Write("Hello");
         }
         public void leerPrimero(object sender, EventArgs e) {
         }
@@ -33,6 +34,9 @@ namespace hada_p3
         public void actualizar(object sender, EventArgs e) {
 
         }
+        public void borrar(object sender, EventArgs e)
+        {
 
+        }
     }
 }

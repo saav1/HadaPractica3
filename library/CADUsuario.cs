@@ -32,7 +32,7 @@ namespace library
 
             c.Open();
     
-            SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('20E','stalyn',22)",c);
+            SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('20A','stalyn',22)",c);
 
             com.ExecuteNonQuery();
         
@@ -66,7 +66,7 @@ namespace library
         public bool deteleUsuario(ENUsuario en) {
             SqlConnection conn = null;
             //Encapsula todo el acceso a datos dentro del try
-            String comando = "Delete from Usuario wehere id = " + en.id;
+            String comando = "Delete from Usuario wehere nombre = " + en.nombre;
 
             try
             {
@@ -88,6 +88,7 @@ namespace library
 
             return true;
         }
+
 
 
         //Ejemplos
