@@ -15,12 +15,12 @@
         &nbsp;NIF:&nbsp;&nbsp;&nbsp;<asp:TextBox ID="textBoxNIF" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
         <br />
-        &nbsp;NOMBRE:&nbsp;&nbsp;&nbsp;
+        &nbsp;Nombre:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="textBoxNombre" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
         <br />
-        &nbsp;APELLIDOS&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="textBoxApellidos" runat="server" Height="22px" Width="461px"></asp:TextBox>
+        &nbsp;Edad&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="textBoxEdad" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="button1" runat="server" Text="Leer" OnClick ="leer"/>

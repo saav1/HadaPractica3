@@ -26,11 +26,12 @@ namespace hada_p3
         public void leerSiguiente(object sender, EventArgs e) {
         }
         public void crear(object sender, EventArgs e) {
-            ENUsuario n = new ENUsuario();
-            n.createUsuario();
 
+            ENUsuario n = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
+            n.createUsuario();
         }
         public void actualizar(object sender, EventArgs e) {
+
         }
 
     }

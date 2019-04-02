@@ -40,13 +40,13 @@ namespace hada_p3 {
         protected global::System.Web.UI.WebControls.TextBox textBoxNombre;
         
         /// <summary>
-        /// Control textBoxApellidos.
+        /// Control textBoxEdad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textBoxApellidos;
+        protected global::System.Web.UI.WebControls.TextBox textBoxEdad;
         
         /// <summary>
         /// Control button1.
