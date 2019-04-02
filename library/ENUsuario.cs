@@ -11,6 +11,7 @@ namespace library
         public string nif;
         public string nombre;
         public int edad;
+        public int id;
         public ArrayList lista;
   
         public ENUsuario() { }
@@ -21,6 +22,9 @@ namespace library
         apropiados de CADUsuario. Devuelve 'false' si no se ha podido realizar
         la operación.*/
         public bool createUsuario() {
+            CADUsuario u = new CADUsuario();
+            u.createUsuario(this);
+
             return true;
         }
 

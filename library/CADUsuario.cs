@@ -11,14 +11,23 @@ namespace library
 {
     class CADUsuario
     {
-        private string conexion= "Data Source=MSSQLLocalDB;AttachDbFilename=Database.mdf;Integrated Security=True";
+        private string conexion;
         //Inicializa la cadena de conexión de la DB.
         public CADUsuario() {
             //Adquiere la cadena de conexión desde un único sitio.
+            conexion = "Data Source = MSSQLLocalDB; AttachDbFilename = Database.mdf; Integrated Security = True";
         }
 
         //Crea un nuevo usuario en la BD con los datos del usuario
         public bool createUsuario(ENUsuario en) {
+            SqlConnection c = new SqlConnection(conexion);
+            try {
+                c.Open();
+                SqlCommand com = new SqlCommand("Insert into Usuarios (id, nombre, nif, edad) values (" + 0 + ", 'Stalyn', '20E'," + 22 + ")", c);
+            }
+            catch (Exception e) {
+
+            }
             return true;
         }
 
@@ -47,7 +56,7 @@ namespace library
         public bool deteleUsuario(ENUsuario en) {
             SqlConnection conn = null;
             //Encapsula todo el acceso a datos dentro del try
-            String comando = "Delete from Cliente wehere id = " + en.nombre;
+            String comando = "Delete from Usuario wehere id = " + en.id;
 
             try
             {
@@ -70,6 +79,9 @@ namespace library
             return true;
         }
 
+
+        //Ejemplos
+        //1.Listar Clientes
         public ArrayList ListarClientes() {
             ArrayList lista = new ArrayList();
 
@@ -85,5 +97,8 @@ namespace library
 
             return lista;
         }
+
+
+        
     }
 }
