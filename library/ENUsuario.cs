@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Collections;
 namespace library
 {
     public class ENUsuario
@@ -11,6 +11,7 @@ namespace library
         public string nif;
         public string nombre;
         public int edad;
+        public ArrayList lista;
   
         public ENUsuario() { }
 
@@ -56,7 +57,12 @@ namespace library
             return true;
         }
 
-
+        public ArrayList listarUsuarios() {
+            ArrayList a = new ArrayList();
+            CADUsuario c = new CADUsuario();
+            a = c.ListarClientes();
+            return a;
+        }
 
     }
 }

@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Collections;
+using System.Data;
 
 namespace library
 {
     class CADUsuario
     {
-        private string conexion;
+        private string conexion= "Data Source=MSSQLLocalDB;AttachDbFilename=Database.mdf;Integrated Security=True";
         //Inicializa la cadena de conexión de la DB.
         public CADUsuario() {
             //Adquiere la cadena de conexión desde un único sitio.
@@ -66,6 +68,22 @@ namespace library
             }
 
             return true;
+        }
+
+        public ArrayList ListarClientes() {
+            ArrayList lista = new ArrayList();
+
+            SqlConnection c = new SqlConnection(conexion);
+            c.Open();
+            SqlCommand com = new SqlCommand("Select * from cliente ", c);
+            SqlDataReader dr = com.ExecuteReader();
+            while (dr.Read()) {
+                lista.Add(dr["nombre"].ToString());
+            }
+            dr.Close();
+            c.Close();
+
+            return lista;
         }
     }
 }
