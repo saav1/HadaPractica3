@@ -7,6 +7,13 @@ using System.Data.SqlClient;
 using System.Collections;
 using System.Data;
 
+using System.ComponentModel;
+
+using System.Drawing;
+using System.Text;
+
+using System.Windows;
+
 namespace library
 {
     class CADUsuario
@@ -15,19 +22,29 @@ namespace library
         //Inicializa la cadena de conexión de la DB.
         public CADUsuario() {
             //Adquiere la cadena de conexión desde un único sitio.
-            conexion = "Data Source = MSSQLLocalDB; AttachDbFilename = Database.mdf; Integrated Security = True";
+            conexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\EPS\Desktop\HadaPractica3\hada-p3\App_Data\Database.mdf;Integrated Security=True";
+            
+
         }
+
 
         //Crea un nuevo usuario en la BD con los datos del usuario
         public bool createUsuario(ENUsuario en) {
-            SqlConnection c = new SqlConnection(conexion);
-            try {
-                c.Open();
-                SqlCommand com = new SqlCommand("Insert into Usuarios (id, nombre, nif, edad) values (" + 0 + ", 'Stalyn', '20E'," + 22 + ")", c);
-            }
-            catch (Exception e) {
 
-            }
+            ENUsuario cl = en;
+            SqlConnection c = new SqlConnection(conexion);
+
+
+            c.Open();
+     
+
+
+            SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('20E','stalyn',22)",c);
+
+            com.ExecuteNonQuery();
+
+            c.Close();
+
             return true;
         }
 
