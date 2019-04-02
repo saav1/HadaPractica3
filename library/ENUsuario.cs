@@ -8,6 +8,10 @@ namespace library
 {
     public class ENUsuario
     {
+        public string nif;
+        public string nombre;
+        public int edad;
+  
         public ENUsuario() { }
 
         public ENUsuario(string nif, string nombre, int edad) { }
