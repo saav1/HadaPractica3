@@ -54,7 +54,6 @@ C:\Users\EPS\Desktop\hada-p3\hada-p3\hada-p3\obj\Debug\usuWeb.csproj.CoreCompile
 C:\Users\EPS\Desktop\hada-p3\hada-p3\hada-p3\obj\Debug\usuWeb.csproj.CopyComplete
 C:\Users\EPS\Desktop\hada-p3\hada-p3\hada-p3\obj\Debug\hada-p3.dll
 C:\Users\EPS\Desktop\hada-p3\hada-p3\hada-p3\obj\Debug\hada-p3.pdb
-C:\Users\EPS\Desktop\HadaPractica3\hada-p3\obj\Debug\usuWeb.csproj.CoreCompileInputs.cache
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\bin\hada-p3.dll.config
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\bin\hada-p3.dll
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\bin\hada-p3.pdb
@@ -109,6 +108,7 @@ C:\Users\EPS\Desktop\HadaPractica3\hada-p3\bin\Microsoft.CodeDom.Providers.DotNe
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\bin\library.pdb
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\obj\Debug\usuWeb.csprojAssemblyReference.cache
+C:\Users\EPS\Desktop\HadaPractica3\hada-p3\obj\Debug\usuWeb.csproj.CoreCompileInputs.cache
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\obj\Debug\usuWeb.csproj.CopyComplete
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\obj\Debug\hada-p3.dll
 C:\Users\EPS\Desktop\HadaPractica3\hada-p3\obj\Debug\hada-p3.pdb

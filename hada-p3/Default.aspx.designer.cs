@@ -49,66 +49,57 @@ namespace hada_p3 {
         protected global::System.Web.UI.WebControls.TextBox textBoxApellidos;
         
         /// <summary>
-        /// Control buttonLeer.
+        /// Control button1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonLeer;
+        protected global::System.Web.UI.WebControls.Button button1;
         
         /// <summary>
-        /// Control buttonLeerPrimero.
+        /// Control button2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonLeerPrimero;
+        protected global::System.Web.UI.WebControls.Button button2;
         
         /// <summary>
-        /// Control buttonLeerAnterior.
+        /// Control button3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonLeerAnterior;
+        protected global::System.Web.UI.WebControls.Button button3;
         
         /// <summary>
-        /// Control buttonLeerSiguiente.
+        /// Control button4.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonLeerSiguiente;
+        protected global::System.Web.UI.WebControls.Button button4;
         
         /// <summary>
-        /// Control buttonCrear.
+        /// Control button5.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonCrear;
+        protected global::System.Web.UI.WebControls.Button button5;
         
         /// <summary>
-        /// Control buttonActualizar.
+        /// Control button6.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonActualizar;
-        
-        /// <summary>
-        /// Control buttonBorrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonBorrar;
+        protected global::System.Web.UI.WebControls.Button button6;
     }
 }

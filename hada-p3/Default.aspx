@@ -12,30 +12,30 @@
         <br />
         PÁGINA DE USUARIO<br />
         <br />
-        &nbsp;NIF<br />
-        <asp:TextBox ID="textBoxNIF" runat="server" Height="22px" Width="461px"></asp:TextBox>
+        &nbsp;NIF:&nbsp;&nbsp;&nbsp;<asp:TextBox ID="textBoxNIF" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
-        &nbsp;NOMBRE<br />
+        <br />
+        &nbsp;NOMBRE:&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="textBoxNombre" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
-        &nbsp;APELLIDOS<br />
+        <br />
+        &nbsp;APELLIDOS&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="textBoxApellidos" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="buttonLeer" runat="server" Text="Leer" />
+        <asp:Button ID="button1" runat="server" Text="Leer" OnClick ="leer"/>
 &nbsp;
-        <asp:Button ID="buttonLeerPrimero" runat="server" Text="Leer Primero" />
+        <asp:Button ID="button2" runat="server" Text="Leer Primero" OnClick ="leerPrimero"/>
 &nbsp;
-        <asp:Button ID="buttonLeerAnterior" runat="server" Text="Leer Anterior" />
+        <asp:Button ID="button3" runat="server" Text="Leer Anterior" OnClick ="leerAnterior"/>
 &nbsp;
-        <asp:Button ID="buttonLeerSiguiente" runat="server" Text="Leer Siguiente" />
+        <asp:Button ID="button4" runat="server" Text="Leer Siguiente" OnClick ="leerSiguiente"/>
 &nbsp;
-        <asp:Button ID="buttonCrear" runat="server" Text="Crear" />
+        <asp:Button ID="button5" runat="server" Text="Crear" OnClick ="crear"/>
 &nbsp;
-        <asp:Button ID="buttonActualizar" runat="server" Text="Actualizar" />
+        <asp:Button ID="button6" runat="server" Text="Actualizar" OnClick ="actualizar"/>
 &nbsp;
-        <asp:Button ID="buttonBorrar" runat="server" Text="Borrar" />
-&nbsp;
+        
 
 
 </asp:Content>
