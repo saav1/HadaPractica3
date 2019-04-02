@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace library
 {
     class CADUsuario
     {
+        private string conexion;
         //Inicializa la cadena de conexión de la DB.
-        public CADUsuario() { }
+        public CADUsuario() {
+            //Adquiere la cadena de conexión desde un único sitio.
+        }
 
         //Crea un nuevo usuario en la BD con los datos del usuario
         public bool createUsuario(ENUsuario en) {
@@ -39,6 +43,28 @@ namespace library
 
         //Borra el usuario representado en 'en' de la BD
         public bool deteleUsuario(ENUsuario en) {
+            SqlConnection conn = null;
+            //Encapsula todo el acceso a datos dentro del try
+            String comando = "Delete from Cliente wehere id = " + en.nombre;
+
+            try
+            {
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(comando, conn);
+                cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException sqlex)
+            {
+                //Envuelve la excepción actual en una excepción más relevante.
+                //throw new CADException("Error borrando el cliente.: " + clienteID, sqlex);
+            }
+            finally
+            {
+                if (conn != null) conn.Close(); //Se asegura de cerrar la conexión. 
+            }
+
             return true;
         }
     }
