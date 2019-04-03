@@ -9,10 +9,7 @@ namespace library
     public class ENUsuario
     {
 
-        static int CONT = 0;
-        //Atributo id.
-        private int id;
-        public int ID{ get{return id;}  set{id = value;} }
+
 
         //Atributo nif.
         private string nif;
@@ -26,12 +23,9 @@ namespace library
         private int edad;
         public int EDAD{ get{return edad;} set{edad = value;} }
 
-        //Sirve para guardar todos los usuarios. ?
-        private ArrayList lista;
 
         //Constructor por defecto.
         public ENUsuario() {
-          id = -1;
           nif = "null";
           nombre = "null";
           edad = -1;
@@ -39,7 +33,6 @@ namespace library
 
         //Constructor.
         public ENUsuario(string eNif, string eNombre, int eEdad) {
-            id = CONT;
             nif = eNif;
             nombre = eNombre;
             edad = eEdad;
@@ -50,31 +43,23 @@ namespace library
         la operación.*/
         public bool createUsuario() {
             CADUsuario u = new CADUsuario();
-            if (u.createUsuario(this))
-            {
-                CONT++;
-                return true;
-            }
-            else {
-                return false;
-
-            }
-
-            
+            return u.createUsuario(this) ? true : false;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el primer usuario.
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false'
          si no se ha podido realizar la operación.*/
         public bool readFirstUsuario() {
-            return true;
+            CADUsuario cadU = new CADUsuario();
+            return cadU.readFirstUsuario(this) ? true : false;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el susuario siguiente al indicado.
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false' si no se
          ha podido realizar la operación.*/
         public bool readNextUsuario() {
-            return true;
+            CADUsuario cadU = new CADUsuario();
+            return cadU.readFirstUsuario(this) ? true : false;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el usuario anterior al indicado.
@@ -93,7 +78,8 @@ namespace library
         /*Borra este usuario de la BD. Para ello hará uso de lo métodos apropiados de CADUsuario.
          Devuelve 'false' si no se ha podido realizar la operación.*/
         public bool deleteUsuario() {
-            return true;
+            CADUsuario cadU = new CADUsuario();
+            return cadU.deteleUsuario(this) ? true : false;
         }
 
         public ArrayList listarUsuarios() {

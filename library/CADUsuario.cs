@@ -45,10 +45,10 @@ namespace library
         }
 
         //Devuelve solo el usuario indicado leído de la DB
-        public bool readFirstUsuario(ref ENUsuario en) {
+        public bool readFirstUsuario(ENUsuario en) {
             SqlConnection conn = null;
-            try
-            {
+            /*try
+            {*/
                 conn = new SqlConnection(conexion);
                 conn.Open();
                 SqlCommand com = new SqlCommand(@"SELECT * FROM Usuarios ORDER BY id DESC", conn);
@@ -56,74 +56,28 @@ namespace library
                 while (dr.Read()) {
                     en.NIF = dr["nif"].ToString();
                     en.NOMBRE = dr["nombre"].ToString();
-                    en.EDAD = (Int32)dr["edad"];
+                    en.EDAD = (Int16)dr["edad"];
                 }
-                
-            }
+            /*}
             catch (Exception)
             {
                 return false;
             }
             finally
-            {
+            {*/
                 if (conn != null) conn.Close();
-            }
+            //}
             return true;
         }
 
         //Devuelve solo el usuario siguiente al indicado
-        public bool readNextUsuario(ref ENUsuario en) {
-            SqlConnection conn = null;
-            try
-            {
-                conn = new SqlConnection(conexion);
-                conn.Open();                    //SELECT * FROM Usuarios ORDER BY id DESC
-                SqlCommand com = new SqlCommand(@"SELECT * from Usuarios where Usuarios.id > " + en.ID + "ORDER BY id DESC", conn);
-                SqlDataReader dr = com.ExecuteReader();
-                while (dr.Read())
-                {
-                    en.NIF = dr["nif"].ToString();
-                    en.NOMBRE = dr["nombre"].ToString();
-                    en.EDAD = (Int32)dr["edad"];
-                }
-
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                if (conn != null) conn.Close();
-            }
+        public bool readNextUsuario(ENUsuario en) {
             return true;
+
         }
 
         //Devuelve solo el usuario anterior al indicado
-        public bool readPrevUsuario(ref ENUsuario en) {
-            SqlConnection conn = null;
-            try
-            {
-                conn = new SqlConnection(conexion);
-                conn.Open();                    //SELECT * FROM Usuarios ORDER BY id DESC
-                SqlCommand com = new SqlCommand(@"SELECT * from Usuarios where Usuarios.id < " + en.ID + "ORDER BY id DESC", conn);
-                SqlDataReader dr = com.ExecuteReader();
-                while (dr.Read())
-                {
-                    en.NIF = dr["nif"].ToString();
-                    en.NOMBRE = dr["nombre"].ToString();
-                    en.EDAD = (Int32)dr["edad"];
-                }
-
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                if (conn != null) conn.Close();
-            }
+        public bool readPrevUsuario(ENUsuario en) {
             return true;
         }
 
@@ -141,7 +95,7 @@ namespace library
             {
                 conn = new SqlConnection(conexion);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(@"Delete from Usuario wehere nif = " + en.NIF, conn);
+                SqlCommand cmd = new SqlCommand(@"DELETE FROM Usuarios WHERE Usuarios.nif = '"+en.NIF+"';", conn);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)

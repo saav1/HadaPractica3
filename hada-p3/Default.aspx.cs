@@ -1,88 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Common;
+using System.Data.SqlTypes;
 using System.Data.SqlClient;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections;
 using library;
-
+using System.Data;
 
 namespace hada_p3
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        static List<ENUsuario> listaUsuarios = new List<ENUsuario>();
 
         protected void Page_Load(object sender, EventArgs e){
-            
+
+
         }
 
         public void leer(object sender, EventArgs e) {
-            LabelMostrarUsuarios.Text = "";
 
-            for (int i = 0; i < listaUsuarios.Count(); i++)
-            {
-                LabelMostrarUsuarios.Text += "ID: " + listaUsuarios[i].ID + "\n"+
-                                             "NOMBRE: " + listaUsuarios[i].NOMBRE + "\n"+
-                                             "NIF: " + listaUsuarios[i].NIF + "\n"+
-                                             "EDAD: " + listaUsuarios[i].EDAD+"|| ";
-            }
-            /*  textBoxNIF.Text = listaUsuarios[i].NIF;
-                textBoxNombre.Text = listaUsuarios[i].NOMBRE;
-                textBoxEdad.Text = listaUsuarios[i].EDAD.ToString();*/
         }
         public void leerPrimero(object sender, EventArgs e) {
-            CADUsuario cadU = new CADUsuario();
-            ENUsuario enU = new ENUsuario();
+            ENUsuario enUsuario = new ENUsuario();
+            CADUsuario cadUsuario = new CADUsuario();
 
-            if (cadU.readFirstUsuario(ref enU))
+            try
             {
-                textBoxNIF.Text = enU.NIF;
-                textBoxNombre.Text = enU.NOMBRE;
-                textBoxEdad.Text = enU.EDAD.ToString();
+                if (cadUsuario.readFirstUsuario(enUsuario))
+                {
+
+                }
+                else
+                {
+                    LabelMostrarUsuarios.Text = "No se ha leido el primero";
+                }
             }
-            else
+            catch (Exception)
             {
-                LabelMostrarUsuarios.Text = "No se puede leer primer usuario.";
+                LabelMostrarUsuarios.Text = "No se ha podido leer el primero";
             }
 
         }
         public void leerAnterior(object sender, EventArgs e) {
-            CADUsuario cadU = new CADUsuario();
-            ENUsuario enU = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
 
-            if (cadU.readPrevUsuario(ref enU))
-            {
-                textBoxNIF.Text = enU.NIF;
-                textBoxNombre.Text = enU.NOMBRE;
-                textBoxEdad.Text = enU.EDAD.ToString();
-                LabelMostrarUsuarios.Text = "Mostrado anterior.";
-            }
-            else
-            {
-                LabelMostrarUsuarios.Text = "No se puede leer anterior.";
-            }
         }
         public void leerSiguiente(object sender, EventArgs e) {
-            CADUsuario cadU = new CADUsuario();
-            ENUsuario enU = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
-
-            if (cadU.readPrevUsuario(ref enU))
+            ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
+            try
             {
-                textBoxNIF.Text = enU.NIF;
-                textBoxNombre.Text = enU.NOMBRE;
-                textBoxEdad.Text = enU.EDAD.ToString();
-                LabelMostrarUsuarios.Text = "Mostrado siguiente.";
+                if (enUsuario.readNextUsuario())
+                {
+                    LabelMostrarUsuarios.Text = "Se ha leido el siguiente";
+                }
+                else
+                {
+                    LabelMostrarUsuarios.Text = "No se ha leido el siguiente";
+                }
             }
-            else
+            catch (Exception)
             {
-                LabelMostrarUsuarios.Text = "No se puede leer siguiente.";
+                LabelMostrarUsuarios.Text = "No se ha podido leer el usuario";
             }
         }
         public void crear(object sender, EventArgs e) {
-            bool creakOk = true;
             ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
             try{
                 if (enUsuario.createUsuario())
@@ -90,19 +74,11 @@ namespace hada_p3
                     LabelMostrarUsuarios.Text = "Se ha guardado el usuario en la BD";
                 }
                 else {
-                    creakOk = false;
                     LabelMostrarUsuarios.Text = "No se ha guardado el usuario.";
                 }
             }
             catch (Exception) {
                 LabelMostrarUsuarios.Text = "No se ha podido crear el usuario!";
-                creakOk = false;
-            }
-
-            if (creakOk) {
-                //Agregamos el usario al ArrayList
-                listaUsuarios.Add(enUsuario);
-                LabelMostrarUsuarios.Text = "Se añade el usuario al array ";
             }
         }
         public void actualizar(object sender, EventArgs e) {
@@ -110,7 +86,22 @@ namespace hada_p3
         }
         public void borrar(object sender, EventArgs e)
         {
-
+            ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, "", 0);
+            try
+            {
+                if (enUsuario.deleteUsuario())
+                {
+                    LabelMostrarUsuarios.Text = "Se ha borrado el usuario en la BD";
+                }
+                else
+                {
+                    LabelMostrarUsuarios.Text = "No se ha borrado el usuario.";
+                }
+            }
+            catch (Exception)
+            {
+                LabelMostrarUsuarios.Text = "No se ha podido borrar el usuario!";
+            }
         }
     }
 }
