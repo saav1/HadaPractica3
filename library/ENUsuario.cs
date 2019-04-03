@@ -8,9 +8,6 @@ namespace library
 {
     public class ENUsuario
     {
-
-
-
         //Atributo nif.
         private string nif;
         public string NIF{ get{return nif;} set{nif = value;} }
@@ -50,8 +47,10 @@ namespace library
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false'
          si no se ha podido realizar la operación.*/
         public bool readFirstUsuario() {
-            CADUsuario cadU = new CADUsuario();
-            // return cadU.readFirstUsuario(this) ? true : false;
+            return true;
+        }
+
+        public bool readUsuario() {
             return true;
         }
 

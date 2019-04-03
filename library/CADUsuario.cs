@@ -94,13 +94,55 @@ namespace library
         }
 
         //Devuelve solo el usuario siguiente al indicado
-        public bool readNextUsuario(ENUsuario en) {
+        public bool readNextUsuario(ref ENUsuario en) {
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand com = new SqlCommand(@"SELECT * FROM Usuarios where Usuarios.id > (select id from Usuarios where Usuarios.nif = '"+en.NIF+"')ORDER BY id DESC",conn);
+                SqlDataReader dr = com.ExecuteReader();
+                while (dr.Read()) {
+                    en.NIF = dr["nif"].ToString();
+                    en.NOMBRE = dr["nombre"].ToString();
+                    en.EDAD = (Int32)dr["edad"];
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null) { conn.Close(); }
+            }
             return true;
-
         }
 
         //Devuelve solo el usuario anterior al indicado
-        public bool readPrevUsuario(ENUsuario en) {
+        public bool readPrevUsuario(ref ENUsuario en) {
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand com = new SqlCommand(@"SELECT * FROM Usuarios where Usuarios.id < (select id from Usuarios where Usuarios.nif = '" + en.NIF + "')ORDER BY id ASC", conn);
+                SqlDataReader dr = com.ExecuteReader();
+                while (dr.Read())
+                {
+                    en.NIF = dr["nif"].ToString();
+                    en.NOMBRE = dr["nombre"].ToString();
+                    en.EDAD = (Int32)dr["edad"];
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null) { conn.Close(); }
+            }
             return true;
         }
 
