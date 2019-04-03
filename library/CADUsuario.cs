@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace library
 {
-    class CADUsuario
+    public class CADUsuario
     {
         private string conexion;
         //Inicializa la cadena de conexión de la DB.
@@ -24,24 +24,50 @@ namespace library
 
         //Crea un nuevo usuario en la BD con los datos del usuario
         public bool createUsuario(ENUsuario en) {
-
             ENUsuario cl = en;
-            SqlConnection c = new SqlConnection(conexion);
-
-
-            c.Open();
-    
-            SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('"+en.NIF+"','"+en.NOMBRE+"','"+en.EDAD+"')",c);
-
-            com.ExecuteNonQuery();
-        
-            c.Close();
-        
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('" + en.NIF + "','" + en.NOMBRE + "','" + en.EDAD + "')", conn);
+                com.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
             return true;
         }
 
         //Devuelve solo el usuario indicado leído de la DB
-        public bool readFirstUsuario(ENUsuario en) {
+        public bool readFirstUsuario(ref ENUsuario en) {
+            SqlConnection conn = null;
+            //try
+            //{
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand com = new SqlCommand(@"SELECT * FROM Usuarios ORDER BY id DESC", conn);
+                SqlDataReader dr = com.ExecuteReader();
+                while (dr.Read()) {
+                    en.NIF = dr["nif"].ToString();
+                    en.NOMBRE = dr["nombre"].ToString();
+                    en.EDAD = (Int32)dr["edad"];
+                }
+                
+            //}
+            //catch (Exception)
+            //{
+              //  return false;
+            //}
+            //finally
+            //{
+                if (conn != null) conn.Close();
+            //}
             return true;
         }
 
@@ -64,21 +90,18 @@ namespace library
         //Borra el usuario representado en 'en' de la BD
         public bool deteleUsuario(ENUsuario en) {
             SqlConnection conn = null;
-            //Encapsula todo el acceso a datos dentro del try
-            String comando = @"Delete from Usuario wehere nombre = " + en.NOMBRE;
-
+                        
             try
             {
                 conn = new SqlConnection(conexion);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(comando, conn);
+                SqlCommand cmd = new SqlCommand(@"Delete from Usuario wehere nif = " + en.NIF, conn);
                 cmd.ExecuteNonQuery();
-
             }
-            catch (SqlException sqlex)
+            catch (Exception)
             {
-                //Envuelve la excepción actual en una excepción más relevante.
-                //throw new CADException("Error borrando el cliente.: " + clienteID, sqlex);
+                //Ha fallado la acción BD.
+                return false;
             }
             finally
             {

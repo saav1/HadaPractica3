@@ -8,8 +8,8 @@ namespace library
 {
     public class ENUsuario
     {
-        public static int CONT = 0;
 
+        static int CONT = 0;
         //Atributo id.
         private int id;
         public int ID{ get{return id;}  set{id = value;} }
@@ -39,11 +39,10 @@ namespace library
 
         //Constructor.
         public ENUsuario(string eNif, string eNombre, int eEdad) {
-          id = ENUsuario.CONT;
-          nif = eNif;
-          nombre = eNombre;
-          edad = eEdad;
-          ENUsuario.CONT++;
+            id = CONT;
+            nif = eNif;
+            nombre = eNombre;
+            edad = eEdad;
         }
 
         /*Guarda este usuario en la BD. Para ello hará uso de los métodos
@@ -51,9 +50,17 @@ namespace library
         la operación.*/
         public bool createUsuario() {
             CADUsuario u = new CADUsuario();
-            u.createUsuario(this);
+            if (u.createUsuario(this))
+            {
+                CONT++;
+                return true;
+            }
+            else {
+                return false;
 
-            return true;
+            }
+
+            
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el primer usuario.
