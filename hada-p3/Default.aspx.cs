@@ -22,6 +22,28 @@ namespace hada_p3
         }
 
         public void leer(object sender, EventArgs e) {
+            ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, "", 0);
+            CADUsuario cadUsuario = new CADUsuario();
+
+            try
+            {
+                if (cadUsuario.readUsuario(ref enUsuario))
+                {
+                    LabelMostrarUsuarios.Text = "Se ha leido el usuario";
+                    textBoxNIF.Text = enUsuario.NIF;
+                    textBoxNombre.Text = enUsuario.NOMBRE;
+                    textBoxEdad.Text = enUsuario.EDAD.ToString();
+                }
+                else
+                {
+                    LabelMostrarUsuarios.Text = "No se ha leido el usuario";
+                }
+            }
+            catch (Exception ex)
+            {
+                LabelMostrarUsuarios.Text = ex.ToString();
+                // LabelMostrarUsuarios.Text = "No se ha podido leer el primero";
+            }
 
         }
         public void leerPrimero(object sender, EventArgs e) {
@@ -30,18 +52,22 @@ namespace hada_p3
 
             try
             {
-                if (cadUsuario.readFirstUsuario(enUsuario))
+                if (cadUsuario.readFirstUsuario(ref enUsuario))
                 {
-
+                    LabelMostrarUsuarios.Text = "Se ha leido el primero";
+                    textBoxNIF.Text = enUsuario.NIF;
+                    textBoxNombre.Text = enUsuario.NOMBRE;
+                    textBoxEdad.Text = enUsuario.EDAD.ToString();
                 }
                 else
                 {
                     LabelMostrarUsuarios.Text = "No se ha leido el primero";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                LabelMostrarUsuarios.Text = "No se ha podido leer el primero";
+                LabelMostrarUsuarios.Text = ex.ToString();
+               // LabelMostrarUsuarios.Text = "No se ha podido leer el primero";
             }
 
         }
@@ -82,7 +108,22 @@ namespace hada_p3
             }
         }
         public void actualizar(object sender, EventArgs e) {
-
+            ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
+            try
+            {
+                if (enUsuario.updateUsuario())
+                {
+                    LabelMostrarUsuarios.Text = "Se ha actualizado el usuario en la BD";
+                }
+                else
+                {
+                    LabelMostrarUsuarios.Text = "No se ha actualizado el usuario.";
+                }
+            }
+            catch (Exception)
+            {
+                LabelMostrarUsuarios.Text = "No se ha actualizado el usuario!";
+            }
         }
         public void borrar(object sender, EventArgs e)
         {
@@ -92,6 +133,9 @@ namespace hada_p3
                 if (enUsuario.deleteUsuario())
                 {
                     LabelMostrarUsuarios.Text = "Se ha borrado el usuario en la BD";
+                    textBoxNIF.Text = "";
+                    textBoxEdad.Text = "";
+                    textBoxNombre.Text = "";
                 }
                 else
                 {

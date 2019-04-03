@@ -51,7 +51,8 @@ namespace library
          si no se ha podido realizar la operación.*/
         public bool readFirstUsuario() {
             CADUsuario cadU = new CADUsuario();
-            return cadU.readFirstUsuario(this) ? true : false;
+            // return cadU.readFirstUsuario(this) ? true : false;
+            return true;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el susuario siguiente al indicado.
@@ -59,7 +60,7 @@ namespace library
          ha podido realizar la operación.*/
         public bool readNextUsuario() {
             CADUsuario cadU = new CADUsuario();
-            return cadU.readFirstUsuario(this) ? true : false;
+            return true;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el usuario anterior al indicado.
@@ -72,7 +73,8 @@ namespace library
         /*Actualiza este usuario en la BD. Para ello hará uso de los métodos apropiados de CADUsuario.
          Devuelve 'false' si no se ha podido realizar la operación.*/
         public bool updateUsuario() {
-            return true;
+            CADUsuario u = new CADUsuario();
+            return u.updateUsuario(this) ? true : false;
         }
 
         /*Borra este usuario de la BD. Para ello hará uso de lo métodos apropiados de CADUsuario.

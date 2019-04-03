@@ -18,7 +18,7 @@ namespace library
         //Inicializa la cadena de conexión de la DB.
         public CADUsuario() {
             //Adquiere la cadena de conexión desde un único sitio.
-            conexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\EPS\Desktop\HadaPractica3\hada-p3\App_Data\Database.mdf;Integrated Security=True";
+            conexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\STALYNALEJANDRO\Desktop\HadaPractica3\hada-p3\App_Data\Database.mdf;Integrated Security=True";
         }
 
 
@@ -43,30 +43,53 @@ namespace library
             }
             return true;
         }
-
-        //Devuelve solo el usuario indicado leído de la DB
-        public bool readFirstUsuario(ENUsuario en) {
+        public bool readUsuario(ref ENUsuario en) {
             SqlConnection conn = null;
-            /*try
-            {*/
+            try
+            {
                 conn = new SqlConnection(conexion);
                 conn.Open();
-                SqlCommand com = new SqlCommand(@"SELECT * FROM Usuarios ORDER BY id DESC", conn);
+                SqlCommand com = new SqlCommand(@"SELECT * FROM Usuarios where Usuarios.nif = '" +en.NIF+ "'", conn);
                 SqlDataReader dr = com.ExecuteReader();
-                while (dr.Read()) {
-                    en.NIF = dr["nif"].ToString();
+                while (dr.Read())
+                { 
                     en.NOMBRE = dr["nombre"].ToString();
-                    en.EDAD = (Int16)dr["edad"];
+                    en.EDAD = (Int32)dr["edad"];
                 }
-            /*}
+            }
             catch (Exception)
             {
                 return false;
             }
             finally
-            {*/
+            {
                 if (conn != null) conn.Close();
-            //}
+            }
+            return true;
+        }
+        //Devuelve solo el usuario indicado leído de la DB
+        public bool readFirstUsuario(ref ENUsuario en) {
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand com = new SqlCommand(@"SELECT TOP 1 * FROM Usuarios", conn);
+                SqlDataReader dr = com.ExecuteReader();
+                while (dr.Read()) {
+                    en.NIF = dr["nif"].ToString();
+                    en.NOMBRE = dr["nombre"].ToString();
+                    en.EDAD = (Int32)dr["edad"];
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
             return true;
         }
 
@@ -84,8 +107,27 @@ namespace library
         //Actualiza los datos de un usuario en la BD con los datos del
         //usuario por el parámetro en.
         public bool updateUsuario(ENUsuario en) {
+            ENUsuario cl = en;
+            SqlConnection conn = null;
+            try
+            {
+                conn = new SqlConnection(conexion);
+                conn.Open();
+                SqlCommand com = new SqlCommand(@"UPDATE Usuarios SET Usuarios.nombre = '"+en.NOMBRE+"',Usuarios.edad =  "+en.EDAD+
+                    " WHERE Usuarios.nif = " + en.NIF, conn);
+                com.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
             return true;
         }
+    
 
         //Borra el usuario representado en 'en' de la BD
         public bool deteleUsuario(ENUsuario en) {
