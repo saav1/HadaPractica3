@@ -60,7 +60,7 @@ namespace library
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false'
          si no se ha podido realizar la operación.*/
         public bool readFirstUsuario() {
-
+            return true;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el susuario siguiente al indicado.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using System.Collections;
 using library;
 
 
@@ -12,34 +12,45 @@ namespace hada_p3
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        ArrayList listaUsuarios = new ArrayList();
+        static List<ENUsuario> listaUsuarios = new List<ENUsuario>();
 
         protected void Page_Load(object sender, EventArgs e){
 
         }
 
         public void leer(object sender, EventArgs e) {
-            ENUsuario enUsaurios = new ENUsuario();
-            listaUsuarios = enUsuarios.listarUsuarios();
+            LabelMostrarUsuarios.Text = "";
 
-            foreach(string s in a){
-              LabelMostarUsuarios.Text += s + "\n";
+            for (int i = 0; i < listaUsuarios.Count(); i++)
+            {
+                LabelMostrarUsuarios.Text += listaUsuarios[i].NOMBRE.ToString() + ", ";
             }
-
         }
         public void leerPrimero(object sender, EventArgs e) {
-          ENUsuario enUsaurios = new ENUsuario();
-          listaUsuarios = enUsuarios.listarUsuarios();
-          LableMostrarUsuarios.Text = listaUsuarios.IndexOf(0);
+          
         }
         public void leerAnterior(object sender, EventArgs e) {
         }
         public void leerSiguiente(object sender, EventArgs e) {
         }
         public void crear(object sender, EventArgs e) {
-
+            bool creakOk = true;
             ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
-            enUsuario.createUsuario();
+            try{
+                enUsuario.createUsuario();
+            }
+            catch (Exception) {
+                LabelMostrarUsuarios.Text = "No se ha podido crear el usuario!";
+                creakOk = false;
+            }
+
+            if (creakOk) {
+                //Agregamos el usario al ArrayList
+                listaUsuarios.Add(enUsuario);
+                LabelMostrarUsuarios.Text = "Se añade el usuario al array ";
+            }
+
+
         }
         public void actualizar(object sender, EventArgs e) {
 

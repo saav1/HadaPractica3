@@ -10,7 +10,6 @@
     <asp:Button ID="title" runat="server" BackColor="#66CCFF" Font-Bold="True" Font-Size="XX-Large" Height="137px" Text="HADA P3 - CURSO 18/19" Width="641px" />
         <br />
         <br />
-        PÁGINA DE USUARIO<br />
         <br />
         &nbsp;NIF:&nbsp;&nbsp;&nbsp;<asp:TextBox ID="textBoxNIF" runat="server" Height="22px" Width="461px"></asp:TextBox>
         <br />
@@ -37,6 +36,12 @@
 &nbsp;
         
     <asp:Button ID="button7" runat="server" Text="Borrar" OnClick="borrar" />
+        
+
+
+    <br />
+    <br />
+    <asp:Label ID="LabelMostrarUsuarios" runat="server" Text="LabelMostrarUsuarios"></asp:Label>
         
 
 

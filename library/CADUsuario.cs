@@ -8,7 +8,6 @@ using System.Collections;
 using System.Data;
 using System.ComponentModel;
 using System.Drawing;
-using System.Text;
 using System.Windows;
 
 namespace library
@@ -32,7 +31,7 @@ namespace library
 
             c.Open();
     
-            SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('20A','stalyn',22)",c);
+            SqlCommand com = new SqlCommand(@"INSERT INTO Usuarios(nif,nombre,edad) VALUES('"+en.NIF+"','"+en.NOMBRE+"','"+en.EDAD+"')",c);
 
             com.ExecuteNonQuery();
         
@@ -66,7 +65,7 @@ namespace library
         public bool deteleUsuario(ENUsuario en) {
             SqlConnection conn = null;
             //Encapsula todo el acceso a datos dentro del try
-            String comando = "Delete from Usuario wehere nombre = " + en.nombre;
+            String comando = @"Delete from Usuario wehere nombre = " + en.NOMBRE;
 
             try
             {
@@ -98,7 +97,7 @@ namespace library
 
             SqlConnection c = new SqlConnection(conexion);
             c.Open();
-            SqlCommand com = new SqlCommand("Select * from cliente ", c);
+            SqlCommand com = new SqlCommand("Select * from Usuarios", c);
             SqlDataReader dr = com.ExecuteReader();
             while (dr.Read()) {
                 lista.Add(dr["nombre"].ToString());
