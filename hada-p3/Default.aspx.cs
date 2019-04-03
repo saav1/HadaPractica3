@@ -12,15 +12,25 @@ namespace hada_p3
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+        ArrayList listaUsuarios = new ArrayList();
+
+        protected void Page_Load(object sender, EventArgs e){
 
         }
 
         public void leer(object sender, EventArgs e) {
-            Response.Write("Hello");
+            ENUsuario enUsaurios = new ENUsuario();
+            listaUsuarios = enUsuarios.listarUsuarios();
+
+            foreach(string s in a){
+              LabelMostarUsuarios.Text += s + "\n";
+            }
+
         }
         public void leerPrimero(object sender, EventArgs e) {
+          ENUsuario enUsaurios = new ENUsuario();
+          listaUsuarios = enUsuarios.listarUsuarios();
+          LableMostrarUsuarios.Text = listaUsuarios.IndexOf(0);
         }
         public void leerAnterior(object sender, EventArgs e) {
         }
@@ -28,8 +38,8 @@ namespace hada_p3
         }
         public void crear(object sender, EventArgs e) {
 
-            ENUsuario n = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
-            n.createUsuario();
+            ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
+            enUsuario.createUsuario();
         }
         public void actualizar(object sender, EventArgs e) {
 
