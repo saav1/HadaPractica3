@@ -18,7 +18,7 @@ namespace library
         //Inicializa la cadena de conexión de la DB.
         public CADUsuario() {
             //Adquiere la cadena de conexión desde un único sitio.
-            conexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\STALYNALEJANDRO\Desktop\HadaPractica3\hada-p3\App_Data\Database.mdf;Integrated Security=True";
+            conexion = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\EPS\Desktop\HadaPractica3\hada-p3\App_Data\Database.mdf;Integrated Security=True";
         }
 
 
@@ -43,7 +43,7 @@ namespace library
             }
             return true;
         }
-        public bool readUsuario(ref ENUsuario en) {
+        public bool readUsuario(ENUsuario en) {
             SqlConnection conn = null;
             try
             {
@@ -68,7 +68,7 @@ namespace library
             return true;
         }
         //Devuelve solo el usuario indicado leído de la DB
-        public bool readFirstUsuario(ref ENUsuario en) {
+        public bool readFirstUsuario(ENUsuario en) {
             SqlConnection conn = null;
             try
             {
@@ -94,7 +94,7 @@ namespace library
         }
 
         //Devuelve solo el usuario siguiente al indicado
-        public bool readNextUsuario(ref ENUsuario en) {
+        public bool readNextUsuario(ENUsuario en) {
             SqlConnection conn = null;
             try
             {
@@ -120,7 +120,7 @@ namespace library
         }
 
         //Devuelve solo el usuario anterior al indicado
-        public bool readPrevUsuario(ref ENUsuario en) {
+        public bool readPrevUsuario(ENUsuario en) {
             SqlConnection conn = null;
             try
             {

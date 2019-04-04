@@ -47,26 +47,29 @@ namespace library
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false'
          si no se ha podido realizar la operación.*/
         public bool readFirstUsuario() {
-            return true;
+            CADUsuario u = new CADUsuario();
+            return u.readFirstUsuario(this) ? true : false;
         }
 
         public bool readUsuario() {
-            return true;
+            CADUsuario u = new CADUsuario();
+            return u.readUsuario(this) ? true : false;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el susuario siguiente al indicado.
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false' si no se
          ha podido realizar la operación.*/
         public bool readNextUsuario() {
-            CADUsuario cadU = new CADUsuario();
-            return true;
+            CADUsuario u = new CADUsuario();
+            return u.readNextUsuario(this) ? true : false;
         }
 
         /*Recupera todos los usuarios de la BD y devuelve solo el usuario anterior al indicado.
          Para ello hará uso de los métodos apropiados de CADUsuario. Devuelve 'false' si no se
          ha podido realizar la operación.*/
         public bool readPrevUsuario() {
-            return true;
+            CADUsuario u = new CADUsuario();
+            return u.readPrevUsuario(this) ? true : false;
         }
 
         /*Actualiza este usuario en la BD. Para ello hará uso de los métodos apropiados de CADUsuario.

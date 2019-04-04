@@ -23,11 +23,10 @@ namespace hada_p3
 
         public void leer(object sender, EventArgs e) {
             ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, "", 0);
-            CADUsuario cadUsuario = new CADUsuario();
 
             try
             {
-                if (cadUsuario.readUsuario(ref enUsuario))
+                if (enUsuario.readUsuario())
                 {
                     LabelMostrarUsuarios.Text = "Se ha leido el usuario";
                     textBoxNIF.Text = enUsuario.NIF;
@@ -48,11 +47,9 @@ namespace hada_p3
         }
         public void leerPrimero(object sender, EventArgs e) {
             ENUsuario enUsuario = new ENUsuario();
-            CADUsuario cadUsuario = new CADUsuario();
-
             try
             {
-                if (cadUsuario.readFirstUsuario(ref enUsuario))
+                if (enUsuario.readFirstUsuario())
                 {
                     LabelMostrarUsuarios.Text = "Se ha leido el primero";
                     textBoxNIF.Text = enUsuario.NIF;
@@ -73,10 +70,10 @@ namespace hada_p3
         }
         public void leerAnterior(object sender, EventArgs e) {
             ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
-            CADUsuario cadU = new CADUsuario();
+
             try
             {
-                if (cadU.readPrevUsuario(ref enUsuario))
+                if (enUsuario.readPrevUsuario())
                 {
                     LabelMostrarUsuarios.Text = "Se ha leido el anterior";
                     textBoxNIF.Text = enUsuario.NIF;
@@ -95,10 +92,9 @@ namespace hada_p3
         }
         public void leerSiguiente(object sender, EventArgs e) {
             ENUsuario enUsuario = new ENUsuario(textBoxNIF.Text, textBoxNombre.Text, Int32.Parse(textBoxEdad.Text));
-            CADUsuario cadU = new CADUsuario();
             try
             {
-                if (cadU.readNextUsuario(ref enUsuario))
+                if (enUsuario.readNextUsuario())
                 {
                     LabelMostrarUsuarios.Text = "Se ha leido el siguiente";
                     textBoxNIF.Text = enUsuario.NIF;
