@@ -1,0 +1,23 @@
+﻿<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <html>
+    <head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        #form1 {
+            height: 453px;
+        }
+    </style>
+</head>
+<body>
+    STALYN ALEJANDRO ALCOCER VALENCIA DNI:20947870E
+    <h1></h1>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
